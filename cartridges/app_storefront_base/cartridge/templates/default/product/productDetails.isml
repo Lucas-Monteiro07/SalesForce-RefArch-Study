@@ -118,7 +118,6 @@
                                         <isset name="price" value="${product.price}" scope="page" />
                                         <isinclude template="product/components/pricing/main" />
                                     </div>
-                                    <isinclude template="product/productTeste"/>
                                 </div>
                             </div>
 
