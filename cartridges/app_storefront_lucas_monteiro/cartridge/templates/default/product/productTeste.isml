@@ -1,1 +1,7 @@
-<p style=" display: flex; justify-content: center;align-content: center; padding: 0;" class="alert alert-danger" role="alert">${Resource.msgf('message.best.deal', 'teste', null, pdict.percentageDiscount, pdict.listPrice)}</p>
+<div class="row">
+    <isloop items="${pdict.products}" var="product">
+    <div class="col-3 col-sm-4">
+        <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.productID, 'swatches', true, 'ratings', true)}" />
+    </div>
+    </isloop>
+</div>

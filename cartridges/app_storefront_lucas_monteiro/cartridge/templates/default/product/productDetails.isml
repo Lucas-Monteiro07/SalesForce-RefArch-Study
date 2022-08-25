@@ -134,7 +134,7 @@
             </div>
             <isset name="loopState" value="{count: 1}" scope="page" />
             <isinclude template="product/components/descriptionAndDetails" />
-            <p>teste</p>
+            <isinclude template="product/productTeste"/>
 
             <div class="recommendations">
                 <isslot id="product-recommendations-m" description="Recommended products" context="global" />
