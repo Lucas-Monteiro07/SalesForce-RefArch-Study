@@ -11,12 +11,6 @@ server.append('Show', function (req, res, next){
     var salesPrice = viewData.product.price.sales.value;
     var percentageSales =  Math.round((salesPrice * 100)/listPrice);
     var percentageDiscount = 100 - percentageSales;
-    var productID = viewData.product.id;
-    var ProductSearchModel = require('dw/catalog/ProductSearchModel');
-    var CatalogMgr = require('dw/catalog/CatalogMgr');
-    var productCategoryID = product.allCategories[0].ID;
-    var getCategory = CatalogMgr.getCategory(productCategoryID)
-    var sortingRule = CatalogMgr.getSortingRule('price-low-to-high')
     viewData.percentageDiscount = percentageDiscount;
 
     res.setViewData(viewData)
