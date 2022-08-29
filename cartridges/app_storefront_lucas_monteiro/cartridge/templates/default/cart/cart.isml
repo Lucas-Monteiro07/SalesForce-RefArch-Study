@@ -76,6 +76,9 @@
                         <isinclude template="cart/cartShippingMethodSelection" />
                     </div>
                     <isinclude template="cart/cartTotals" />
+                    <isif condition="${pdict.total > pdict.cartMessage}">
+                        <isinclude template="cart/cartTotal" />
+                    </isif>
                     <div class="row">
                         <div class="col-12 checkout-continue">
                             <isinclude template="cart/checkoutButtons"/>

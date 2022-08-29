@@ -1,0 +1,1 @@
+<p style="display: flex; align-items: center; justify-content: center" class="alert alert-danger" role="alert">${Resource.msgf('cart.message', 'cart', null, pdict.cartMessage)}</p>

@@ -24,17 +24,6 @@ server.get('Show', cache.applyPromotionSensitiveCache, consentTracking.consent, 
         res.setStatusCode(404);
         res.render('error/notFound');
     } else {
-        function percentageDiscount(listPrice, salesPrice){
-            var listP = listPrice
-            var salesP = salesPrice
-            var percentageSales =  Math.round((salesP * 100)/listP)
-            var percentageDiscount = 100 - percentageSales
-            return percentageDiscount
-        }
-        var listPrice = showProductPageHelperResult.product.price.list.value;
-        var salesPrice = showProductPageHelperResult.product.price.sales.value
-        var percentageD = percentageDiscount(listPrice, salesPrice)
-        showProductPageHelperResult.product.price.percentageDiscount = percentageD
         res.render(showProductPageHelperResult.template, {
             product: showProductPageHelperResult.product,
             addToCartUrl: showProductPageHelperResult.addToCartUrl,
