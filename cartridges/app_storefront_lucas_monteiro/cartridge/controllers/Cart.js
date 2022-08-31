@@ -13,6 +13,27 @@ server.append('AddProduct', function (req, res, next){
     var productCode = productPrice.currencyCode;
     var productDescription = product.longDescription;
     var productQuantityTotal = viewData.quantityTotal;
+    var context = {
+        productName: productName,
+        productImg0: images,
+        productPrice: productPrice,
+        productCode: productCode,
+        productDescription: productDescription,
+        productQuantityTotal: productQuantityTotal,
+    }
+
+    var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers')
+    var email = {
+        to: "lucas.monteiro@alphasquad.cx",
+        subject: "Confirmação Teste",
+        from: "noreply@salesforce.com"
+    }
+
+    var template = "checkout/confirmation/emailTeste"
+
+    emailHelper.send(email, template, context)
+
+
     res.setViewData(viewData);
 
     return next();
