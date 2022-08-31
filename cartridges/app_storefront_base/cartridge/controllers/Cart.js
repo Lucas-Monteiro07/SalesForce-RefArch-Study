@@ -23,6 +23,7 @@ server.get('MiniCart', server.middleware.include, function (req, res, next) {
 
 server.post('AddProduct', function (req, res, next) {
     var BasketMgr = require('dw/order/BasketMgr');
+    var ProductMgr = require('dw/catalog/ProductMgr');
     var Resource = require('dw/web/Resource');
     var URLUtils = require('dw/web/URLUtils');
     var Transaction = require('dw/system/Transaction');
