@@ -3,11 +3,24 @@
 var server = require('server');
 
 
-server.get('Show', function (req, res, next){
-    var viewData = res.getViewData()
+server.get('Show', csrfProtection.generateToken, function (req, res, next){
+    var URLUtils = require('dw/web/URLUtils');
+    var form = server.forms.getForm('newsletter');
+    res.render('/newsletter/newsletter', {
+        form: form,
+        actionURL: URLUtils.url('Newsletter-Submit').toString()
+    });
+    next();
+ });
 
-    res.render('/newsletter/newsletter')
+server.post('Submit', function (req, res, next){
+    var fields = req.form;
+    var firstname = fields.firstname;
+    var lastname = fields.lastname;
+    var email = fields.email;
 
+
+    next()
 })
 
 
