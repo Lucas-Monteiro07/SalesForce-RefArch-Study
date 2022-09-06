@@ -3,7 +3,7 @@
 var server = require('server');
 
 
-server.get('Show', csrfProtection.generateToken, function (req, res, next){
+server.get('Show', function (req, res, next){
     var URLUtils = require('dw/web/URLUtils');
     var form = server.forms.getForm('newsletter');
     res.render('/newsletter/newsletter', {
@@ -14,26 +14,29 @@ server.get('Show', csrfProtection.generateToken, function (req, res, next){
  });
 
 server.post('Submit', function (req, res, next){
+    var viewData = res.getViewData();
     var fields = req.form;
     var name = fields.firstName;
     var lastname = fields.lastName;
     var email = fields.email;
-    var teste = 'checkout/confirmation/newsletter-email.isml'
     var emailObj = {
         to: email,
         subject: "Confirmação de Newsletter",
         from: "noreply@salesforce.com"
     }
     var context = {
-        firstName: firstName,
-        lastName: lastName
+        firstName: name,
+        lastName: lastname
     }
-
+    
+    var template = 'checkout/confirmation/newsletter-email'
     var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers')
     if (emailHelper.validateEmail(email)){
-        emailHelper.send(emailObj, teste, context)
+        emailHelper.send(emailObj, template, context)
     }
 
+    viewData.template = template;
+    res.setViewData(viewData);
     next()
 })
 
