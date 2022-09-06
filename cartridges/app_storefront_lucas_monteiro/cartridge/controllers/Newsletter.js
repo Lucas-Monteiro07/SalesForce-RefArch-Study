@@ -15,10 +15,24 @@ server.get('Show', csrfProtection.generateToken, function (req, res, next){
 
 server.post('Submit', function (req, res, next){
     var fields = req.form;
-    var firstname = fields.firstname;
-    var lastname = fields.lastname;
+    var name = fields.firstName;
+    var lastname = fields.lastName;
     var email = fields.email;
+    var teste = 'checkout/confirmation/newsletter-email.isml'
+    var emailObj = {
+        to: email,
+        subject: "Confirmação de Newsletter",
+        from: "noreply@salesforce.com"
+    }
+    var context = {
+        firstName: firstName,
+        lastName: lastName
+    }
 
+    var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers')
+    if (emailHelper.validateEmail(email)){
+        emailHelper.send(emailObj, teste, context)
+    }
 
     next()
 })

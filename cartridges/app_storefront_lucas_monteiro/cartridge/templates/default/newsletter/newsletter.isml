@@ -1,10 +1,13 @@
-<form action="${pdict.actionUrl}" class="login" method="POST" name="newsletter-form">
+<form action="${pdict.actionURL}" class="login" method="POST" name="newsletter-form">
     <isdecorate template="common/layout/page">
         <isscript>
             var assets = require('*/cartridge/scripts/assets.js');
             assets.addCss('/css/login.css');
             assets.addJs('/js/login.js');
         </isscript>
-        <isinclude template="newsletter/newsletter-form"  />
+        <div class="hero slant-down login-banner">
+            <h1 class="page-title">${Resource.msg('header.hero.image.login', 'login', null)}</h1>
+        </div>
+        <isinclude template="newsletter/newsletter-form"/>
     </isdecorate>
 </form>
