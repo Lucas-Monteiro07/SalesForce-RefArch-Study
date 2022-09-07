@@ -8,13 +8,15 @@
                         <label class="form-control-label">
                             ${Resource.msg('label.input.first.name', 'newsletter', null)}
                         </label>
-                        <input id="login-form-email" required aria-required="true" class="form-control required"  name="firstName" placeholder="Nome">
+                        <input id="login-form-email" required aria-required="true" class="form-control required"
+                            name="firstName" placeholder="Nome">
                     </div>
                     <div class="form-group required">
                         <label class="form-control-label">
                             ${Resource.msg('label.input.last.name', 'newsletter', null)}
                         </label>
-                        <input id="login-form-email" required aria-required="true" class="form-control required"  name="lastName" placeholder="Sobrenome">
+                        <input id="login-form-email" required aria-required="true" class="form-control required"
+                            name="lastName" placeholder="Sobrenome">
 
                     </div>
 
@@ -22,7 +24,8 @@
                         <label class="form-control-label" for="login-form-email">
                             ${Resource.msg('label.input.login.email', 'login', null)}
                         </label>
-                        <input type="email" id="login-form-email" required aria-required="true" class="form-control required"  name="email" placeholder="exemplo@exemplo.com">
+                        <input type="email" id="login-form-email" required aria-required="true"
+                            class="form-control required" name="email" placeholder="exemplo@exemplo.com">
 
                     </div>
 

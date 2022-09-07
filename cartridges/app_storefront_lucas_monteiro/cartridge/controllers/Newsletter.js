@@ -26,10 +26,12 @@ server.post('Submit', function (req, res, next){
     }
     var context = {
         firstName: name,
-        lastName: lastname
+        lastName: lastname,
+        coupon: coupon.ID
     }
-    
-    var template = 'checkout/confirmation/newsletter-email'
+    var CouponMgr = require('dw/campaign/CouponMgr');
+    var coupon = CouponMgr.getCoupon('exemplo')
+    var template = '/checkout/confirmation/newsletterEmail'
     var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers')
     if (emailHelper.validateEmail(email)){
         emailHelper.send(emailObj, template, context)

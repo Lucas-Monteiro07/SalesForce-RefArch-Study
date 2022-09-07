@@ -8,6 +8,6 @@
         <div class="hero slant-down login-banner">
             <h1 class="page-title">${Resource.msg('header.hero.image.login', 'login', null)}</h1>
         </div>
-        <isinclude template="newsletter/newsletter-form"/>
+        <isinclude template="newsletter/newsletter-form" />
     </isdecorate>
 </form>

@@ -1,0 +1,12 @@
+<body>
+
+    <div>
+        <p>${Resource.msg('msg.placed.order.thank.you', 'confirmation', null)}</p>
+    </div>
+
+    <h1>Olá ${pdict.firstName} ${pdict.lastName}</h1>
+
+
+    <h2>O Cupom de desconto é: ${pdict.coupon}</h2>
+
+</body>
