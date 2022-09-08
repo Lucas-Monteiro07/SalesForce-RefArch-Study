@@ -6,7 +6,4 @@
 
     <h1>Olá ${pdict.firstName} ${pdict.lastName}</h1>
 
-
-    <h2>O Cupom de desconto é: ${pdict.coupon}</h2>
-
 </body>
