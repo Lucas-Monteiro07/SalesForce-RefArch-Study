@@ -15,7 +15,6 @@ server.get('Show', csrfProtection.generateToken, function (req, res, next){
 server.post('Submit', function (req, res, next){
     var emailHelpers = require('*/cartridge/scripts/helpers/emailHelpers');
     var PromotionMgr = require('dw/campaign/PromotionMgr');
-    var viewData = res.getViewData();
     var CustomObjectMgr = require('dw/object/CustomObjectMgr');
     var Transaction = require('dw/system/Transaction');
 
@@ -40,6 +39,7 @@ server.post('Submit', function (req, res, next){
             customObject.custom.name = name;
             customObject.custom.lastname = lastname;
             customObject.custom.coupon = currentCouponCode;
+            var couponCode = coupons[1].ID
 
             var emailObj = {
                 to: email,
@@ -50,6 +50,7 @@ server.post('Submit', function (req, res, next){
             var context = {
                 firstName: name,
                 lastName: lastname,
+                couponCode: couponCode
             }
             if (currentCouponCode == null) {
 

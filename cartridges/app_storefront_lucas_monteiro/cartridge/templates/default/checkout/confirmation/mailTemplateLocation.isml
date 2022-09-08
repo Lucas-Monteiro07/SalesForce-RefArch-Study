@@ -1,9 +1,7 @@
 <body>
-
-    <div>
-        <p>${Resource.msg('msg.placed.order.thank.you', 'confirmation', null)}</p>
-    </div>
-
-    <h1>Olá ${pdict.firstName} ${pdict.lastName}</h1>
-
+    <h1>${Resource.msgf('message.hello', 'newsletter', null, pdict.firstName, pdict.lastName)}</h1>
+    </br>
+    <h2>${Resource.msg('message.avaliable.mail', 'newsletter', null)}</h2>
+    </br>
+    <p>${pdict.couponCode}</p>
 </body>
