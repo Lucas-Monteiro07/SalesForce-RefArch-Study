@@ -1,1 +1,0 @@
-<p style=" display: flex; justify-content: center;align-content: center; padding: 0;" class="alert alert-danger" role="alert">${Resource.msgf('message.best.deal', 'teste', null, pdict.percentageDiscount, pdict.listPrice)}</p>
