@@ -2,11 +2,13 @@ var File = require("dw/io/File");
 var FileWriter = require("dw/io/FileWriter");
 var XMLStreamWriter = require("dw/io/XMLStreamWriter");
 var ProductMgr = require("dw/catalog/ProductMgr");
+var CatalogMgr = require('dw/catalog/CatalogMgr');
 
 exports.execute = function(args) {
     // Brand from job parameters
     var brand = args.brand;
-    var products = ProductMgr.queryAllSiteProducts();
+    var catalog = CatalogMgr.getCatalog('storefront-catalog-m-en')
+    var products = ProductMgr.queryProductsInCatalog(catalog);
     var productsWithBrand = [];
 
     while (products.hasNext()) {
@@ -39,15 +41,21 @@ exports.execute = function(args) {
     xsw.writeStartDocument("UTF-8", "1.0");
     xsw.writeStartElement("catalog");
     xsw.writeAttribute("xmlns", "http://www.demandware.com/xml/impex/catalog/2006-10-31");
-    xsw.writeAttribute("catalog-id", "apparel-catalog");
+    xsw.writeAttribute("catalog-id", "storefront-catalog-m-en");
 
-    xsw.writeStartElement("category-assignment")
-    xsw.writeAttribute()
-    xsw.writeEndElement();
-
+        for (var i = 0; i < productsWithBrand.length; i++){
+        xsw.writeStartElement("category-assignment");
+            xsw.writeAttribute('category-id', productsWithBrand[i].allCategories[0].ID);
+            xsw.writeAttribute('product-id', productsWithBrand[i].ID)
+                xsw.writeStartElement('primary-flag')
+                    xsw.writeCharacters('true');
+                xsw.writeEndElement();
+            xsw.writeEndElement();
+        }
 
     xsw.writeEndElement();
     xsw.writeEndDocument();
+    xsw.flush()
     xsw.close();
     fileWriter.close();
 };
